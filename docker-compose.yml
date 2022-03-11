@@ -718,6 +718,28 @@ services:
 #        - frontend
         - backend
 
+### NextJS ################################################
+##THis is an added thing, treat it with care ##############
+###########################################################
+    admin:
+      build:
+        context: ./nextjs
+        args:
+          - LARADOCK_NODE_VERSION=${NEXTJS_VERSION}
+          - LARADOCK_NODE_PORT=${NEXTJS_NODE_PORT}
+          - LARADOCK_NODE_PATH_HOST=${APP_CODE_PATH_ADMIN_CONTAINER}
+      stdin_open: true
+      volumes:
+        - ${APP_CODE_PATH_ADMIN_HOST}:${APP_CODE_PATH_ADMIN_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+        - ${APP_CODE_PATH_ADMIN_HOST}/node_modules:${APP_CODE_PATH_ADMIN_CONTAINER}/node_modules${APP_CODE_CONTAINER_FLAG}
+        - ${APP_CODE_PATH_ADMIN_HOST}/build:${APP_CODE_PATH_ADMIN_CONTAINER}/build${APP_CODE_CONTAINER_FLAG}
+      ports:
+        - 8081:3000
+      networks:
+        - frontend
+      environment:
+        - CHOKIDAR_USEPOLLING=true
+
   ### Redis ################################################
     redis:
       build: ./redis
