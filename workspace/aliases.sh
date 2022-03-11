@@ -21,7 +21,7 @@ fi
 
 # List all files colorized in long format
 #alias l="ls -lF ${colorflag}"
-### MEGA: I want l and la ti return hisdden files
+### MEGA: I want l and la ti return hidden files
 alias l="ls -laF ${colorflag}"
 
 # List all files colorized in long format, including dot files
@@ -51,6 +51,7 @@ alias cll="clear && ls -l"
 alias cls="clear && ls"
 alias code="cd /var/www"
 alias ea="vi ~/aliases.sh"
+alias vea="vim ~/aliases.sh"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -70,6 +71,7 @@ alias refresh="php artisan migrate:refresh"
 alias rollback="php artisan migrate:rollback"
 alias seed="php artisan db:seed"
 alias serve="php artisan serve --quiet &"
+alias doitagain="art db:wipe && art migrate --seed && art passport:install && composer dump-autoload && art optimize"
 
 alias phpunit="./vendor/bin/phpunit"
 alias pu="phpunit"
