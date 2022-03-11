@@ -8,51 +8,9 @@ networks:
 volumes:
   mysql:
     driver: ${VOLUMES_DRIVER}
-  percona:
-    driver: ${VOLUMES_DRIVER}
-  mssql:
-    driver: ${VOLUMES_DRIVER}
-  postgres:
-    driver: ${VOLUMES_DRIVER}
-  memcached:
-    driver: ${VOLUMES_DRIVER}
   redis:
     driver: ${VOLUMES_DRIVER}
-  neo4j:
-    driver: ${VOLUMES_DRIVER}
-  mariadb:
-    driver: ${VOLUMES_DRIVER}
-  mongo:
-    driver: ${VOLUMES_DRIVER}
-  minio:
-    driver: ${VOLUMES_DRIVER}
-  rethinkdb:
-    driver: ${VOLUMES_DRIVER}
-  phpmyadmin:
-    driver: ${VOLUMES_DRIVER}
-  adminer:
-    driver: ${VOLUMES_DRIVER}
-  aerospike:
-    driver: ${VOLUMES_DRIVER}
-  caddy:
-    driver: ${VOLUMES_DRIVER}
-  meilisearch:
-    driver: ${VOLUMES_DRIVER}
-  elasticsearch:
-    driver: ${VOLUMES_DRIVER}
-  mosquitto:
-    driver: ${VOLUMES_DRIVER}
-  confluence:
-    driver: ${VOLUMES_DRIVER}
-  sonarqube:
-    driver: ${VOLUMES_DRIVER}
-  cassandra:
-    driver: ${VOLUMES_DRIVER}
-  graylog:
-    driver: ${VOLUMES_DRIVER}
   docker-in-docker:
-    driver: ${VOLUMES_DRIVER}
-  react:
     driver: ${VOLUMES_DRIVER}
 
 services:
@@ -419,8 +377,10 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases:
+            - "${APP_CODE_ALIAS_CONTAINER}"
+        backend:
 
 ### OpenResty Server #########################################
     openresty:
@@ -725,7 +685,7 @@ services:
       build:
         context: ./nextjs
         args:
-          - LARADOCK_NODE_VERSION=${NEXTJS_VERSION}
+          - LARADOCK_NODE_VERSION=${NEXTJS_NODE_VERSION}
           - LARADOCK_NODE_PORT=${NEXTJS_NODE_PORT}
           - LARADOCK_NODE_PATH_HOST=${APP_CODE_PATH_ADMIN_CONTAINER}
       stdin_open: true
