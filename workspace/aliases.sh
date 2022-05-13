@@ -21,7 +21,7 @@ fi
 
 # List all files colorized in long format
 #alias l="ls -lF ${colorflag}"
-### MEGA: I want l and la ti return hidden files
+### MEGA: I want l and la ti return hisdden files
 alias l="ls -laF ${colorflag}"
 
 # List all files colorized in long format, including dot files
@@ -71,7 +71,7 @@ alias refresh="php artisan migrate:refresh"
 alias rollback="php artisan migrate:rollback"
 alias seed="php artisan db:seed"
 alias serve="php artisan serve --quiet &"
-alias doitagain="art db:wipe && art migrate --seed && art passport:install && composer dump-autoload && art optimize"
+alias doitagain="art db:wipe && art migrate:refresh --seed && art passport:install && art optimize && composer dump-autoload"
 
 alias phpunit="./vendor/bin/phpunit"
 alias pu="phpunit"
@@ -89,6 +89,7 @@ alias npm-global="npm list -g --depth 0"
 alias ra="reload"
 alias reload="source ~/.aliases && echo \"$COL_GREEN ==> Aliases Reloaded... $COL_RESET \n \""
 alias run="npm run"
+alias tree="xtree"
 
 # Xvfb
 alias xvfb="Xvfb -ac :0 -screen 0 1024x768x16 &"
