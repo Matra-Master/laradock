@@ -419,8 +419,10 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases:
+            - "${APP_CODE_ALIAS_CONTAINER}"
+        backend:
 
 ### OpenResty Server #########################################
     openresty:
@@ -725,7 +727,7 @@ services:
       build:
         context: ./nextjs
         args:
-          - LARADOCK_NODE_VERSION=${NEXTJS_VERSION}
+          - LARADOCK_NODE_VERSION=${NEXTJS_NODE_VERSION}
           - LARADOCK_NODE_PORT=${NEXTJS_NODE_PORT}
           - LARADOCK_NODE_PATH_HOST=${APP_CODE_PATH_ADMIN_CONTAINER}
       stdin_open: true
