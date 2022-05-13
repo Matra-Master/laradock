@@ -1,2 +1,4 @@
 *.conf
 !default.conf
+!admin.conf
+!api.conf
