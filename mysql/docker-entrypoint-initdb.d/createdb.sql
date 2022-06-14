@@ -14,13 +14,10 @@
 #     mysql -u root -p < /docker-entrypoint-initdb.d/createdb.sql
 #
 
-CREATE DATABASE IF NOT EXISTS `phronencial` COLLATE 'utf8_general_ci' ;
-GRANT ALL ON `phronencial`.* TO 'usr_phronencial'@'%' ;
+CREATE DATABASE IF NOT EXISTS `phrx` DEFAULT CHARACTER SET latin1;
+GRANT ALL ON `phrx`.* TO 'root'@'%' ;
 
-CREATE DATABASE IF NOT EXISTS `phronencial_1` COLLATE 'utf8_general_ci' ;
-GRANT ALL ON `phronencial`.* TO 'usr_phronencial'@'%' ;
-
-#CREATE DATABASE IF NOT EXISTS `dev_db_3` COLLATE 'utf8_general_ci' ;
-#GRANT ALL ON `dev_db_3`.* TO 'default'@'%' ;
+CREATE DATABASE IF NOT EXISTS `phrx_1` DEFAULT CHARACTER SET latin1;
+GRANT ALL ON `phrx_1`.* TO 'root'@'%' ;
 
 FLUSH PRIVILEGES ;
