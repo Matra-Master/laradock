@@ -1,4 +1,5 @@
 #!/bin/sh
 ./stop.sh
 
-docker-compose up nginx mysql admin
+docker-compose up docker-in-docker mysql workspace
+
